@@ -159,6 +159,7 @@
             this.checkBox3.TabIndex = 39;
             this.checkBox3.Text = "PHP";
             this.checkBox3.UseVisualStyleBackColor = false;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged_1);
             // 
             // checkBox2
             // 
@@ -171,6 +172,7 @@
             this.checkBox2.TabIndex = 38;
             this.checkBox2.Text = "C#";
             this.checkBox2.UseVisualStyleBackColor = false;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_1);
             // 
             // checkBox1
             // 
@@ -183,6 +185,7 @@
             this.checkBox1.TabIndex = 37;
             this.checkBox1.Text = "JAVA";
             this.checkBox1.UseVisualStyleBackColor = false;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_2);
             // 
             // label3
             // 
