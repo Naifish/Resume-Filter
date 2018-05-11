@@ -63,17 +63,7 @@ namespace Resume_Filter
             }
         }
 
-
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox3.Checked == true)
-            {
-                textBox4.Enabled = true;
-                php = "php";
-            }
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void checkBox1_CheckedChanged_2(object sender, EventArgs e)
         {
             if (checkBox1.Checked == true)
             {
@@ -82,7 +72,7 @@ namespace Resume_Filter
             }
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        private void checkBox2_CheckedChanged_1(object sender, EventArgs e)
         {
             if (checkBox2.Checked == true)
             {
@@ -91,6 +81,14 @@ namespace Resume_Filter
             }
         }
 
+        private void checkBox3_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked == true)
+            {
+                textBox4.Enabled = true;
+                php = "php";
+            }
+        }
 
         private void listBox2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
