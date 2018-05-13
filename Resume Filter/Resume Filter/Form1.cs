@@ -81,6 +81,444 @@ namespace Resume_Filter
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            button2.Enabled = false;
+            store_names = new string[listBox1.Items.Count];
+            for (int i = 0; i < listBox1.Items.Count; i++)
+            {
+                store_names[i] = listBox1.Items[i].ToString();
+            }
+
+
+            for (int i = 0; i < listBox1.Items.Count; i++)
+            {
+                //Create word document
+                Document document = new Document();
+                //document.LoadFromFile(@"D:\my CV.docx");
+                document.LoadFromFile(@"" + strFilePath + "\\" + store_names[i]);
+
+                //Save doc file.
+                document.SaveToFile(store_names[i] + ".txt", FileFormat.Txt);
+                //document.SaveToFile("" + store_names[i] + "", FileFormat.Txt);
+            }
+            for (int i = 0; i < listBox1.Items.Count; i++)
+            {
+                StreamReader file = new StreamReader(@"" + strFilePath + "\\" + store_names[i]);
+                if (checkBox1.Checked == true && checkBox2.Checked == false && checkBox3.Checked == false)
+                {
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        if (line.Contains(java) && line.Contains(textBox2.Text))
+                        {
+                            //listBox2.Visible = true;
+                            listBox2.Items.Add(store_names[i]);
+                            break;
+                        }
+                        else if (checkBox1.Checked == true && textBox2.Text != null)
+                        {
+                            while ((line = file.ReadLine()) != null)
+                            {
+                                line = line.Replace("-", " ");
+                                for (int k = 0; k < year.Length - 1; k++)
+                                {
+                                    if (line.Contains(year[k]) && line.Contains(java) && bol == false)
+                                    {
+                                        bol = true;
+                                        header = k;
+                                    }
+                                    else if (bol == true)
+                                    {
+                                        if (line.Contains(year[k + 1]) && line.Contains(java))
+                                        {
+                                            pointer = k;
+                                        }
+
+                                    }
+                                }
+                                for (int l = header; l < pointer; l++)
+                                {
+                                    yr++;
+                                }
+                                if (exp1 < yr)
+                                {
+                                    listBox2.Items.Add(store_names[i]);
+                                }
+                                {
+
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (checkBox2.Checked == true && checkBox1.Checked == false && checkBox3.Checked == false)
+                {
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        if (line.Contains(Csharp) && line.Contains(textBox3.Text))
+                        {
+                            //listBox2.Visible = true;
+                            listBox2.Items.Add(store_names[i]);
+                            break;
+                        }
+                        else if (checkBox2.Checked == true && textBox3.Text != null)
+                        {
+                            while ((line = file.ReadLine()) != null)
+                            {
+                                line = line.Replace("-", " ");
+                                for (int k = 0; k < year.Length - 1; k++)
+                                {
+                                    if (line.Contains(year[k]) && line.Contains(Csharp) && bol == false)
+                                    {
+                                        bol = true;
+                                        header = k;
+                                    }
+                                    else if (bol == true)
+                                    {
+                                        if (line.Contains(year[k + 1]) && line.Contains(Csharp))
+                                        {
+                                            pointer = k;
+                                        }
+
+                                    }
+                                }
+                                for (int l = header; l < pointer; l++)
+                                {
+                                    yr++;
+                                }
+                                if (exp2 < yr)
+                                {
+                                    listBox2.Items.Add(store_names[i]);
+                                }
+                                {
+
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (checkBox3.Checked == true && checkBox1.Checked == false && checkBox2.Checked == false)
+                {
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        if (line.Contains(php) && line.Contains(textBox4.Text))
+                        {
+                            //listBox2.Visible = true;
+                            listBox2.Items.Add(store_names[i]);
+                            break;
+                        }
+                        else if (checkBox3.Checked == true && textBox4.Text != null)
+                        {
+                            while ((line = file.ReadLine()) != null)
+                            {
+                                line = line.Replace("-", " ");
+                                for (int k = 0; k < year.Length - 1; k++)
+                                {
+                                    if (line.Contains(year[k]) && line.Contains(php) && bol == false)
+                                    {
+                                        bol = true;
+                                        header = k;
+                                    }
+                                    else if (bol == true)
+                                    {
+                                        if (line.Contains(year[k + 1]) && line.Contains(php))
+                                        {
+                                            pointer = k;
+                                        }
+
+                                    }
+                                }
+                                for (int l = header; l < pointer; l++)
+                                {
+                                    yr++;
+                                }
+                                if (exp3 < yr)
+                                {
+                                    listBox2.Items.Add(store_names[i]);
+                                }
+                                {
+
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (checkBox1.Checked == true && checkBox2.Checked == true && checkBox3.Checked == false)
+                {
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        if (line.Contains(java) && line.Contains(textBox2.Text))
+                        {
+                            while ((line = file.ReadLine()) != null)
+                            {
+                                if (line.Contains(Csharp) && line.Contains(textBox3.Text))
+                                {
+                                    listBox2.Items.Add(store_names[i]);
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        else if (checkBox1.Checked == true && textBox2.Text != null && checkBox2.Checked == true && textBox3.Text != null)
+                        {
+                            while ((line = file.ReadLine()) != null)
+                            {
+                                line = line.Replace("-", " ");
+                                for (int k = 0; k < year.Length - 1; k++)
+                                {
+                                    if (line.Contains(year[k]) && line.Contains(java) && bol == false)
+                                    {
+                                        bol = true;
+                                        header = k;
+                                    }
+                                    else if (bol == true)
+                                    {
+                                        if (line.Contains(year[k + 1]) && line.Contains(java))
+                                        {
+                                            pointer = k;
+                                        }
+
+                                    }
+                                }
+                                for (int l = header; l < pointer; l++)
+                                {
+                                    yr++;
+                                }
+                                if (exp1 < yr)
+                                {
+                                    //listBox2.Items.Add(store_names[i]);
+                                    while ((line = file.ReadLine()) != null)
+                                    {
+                                        line = line.Replace("-", " ");
+                                        for (int k = 0; k < year.Length - 1; k++)
+                                        {
+                                            if (line.Contains(year[k]) && line.Contains(Csharp) && bol == false)
+                                            {
+                                                bol = true;
+                                                header = k;
+                                            }
+                                            else if (bol == true)
+                                            {
+                                                if (line.Contains(year[k + 1]) && line.Contains(Csharp))
+                                                {
+                                                    pointer = k;
+                                                }
+
+                                            }
+                                        }
+                                        for (int l = header; l < pointer; l++)
+                                        {
+                                            yr++;
+                                        }
+                                        if (exp2 < yr)
+                                        {
+                                            listBox2.Items.Add(store_names[i]);
+                                        }
+                                        {
+
+                                        }
+                                    }
+                                }
+                                {
+
+                                }
+                            }
+                        }
+                    }
+
+                }
+                else if (checkBox1.Checked == true && checkBox3.Checked == true && checkBox2.Checked == false)
+                {
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        if (line.Contains(java) && line.Contains(textBox2.Text))
+                        {
+                            while ((line = file.ReadLine()) != null)
+                            {
+                                if (line.Contains(php) && line.Contains(textBox4.Text))
+                                {
+                                    listBox2.Items.Add(store_names[i]);
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        else if (checkBox1.Checked == true && textBox2.Text != null && checkBox3.Checked == true && textBox4.Text != null)
+                        {
+                            while ((line = file.ReadLine()) != null)
+                            {
+                                line = line.Replace("-", " ");
+                                for (int k = 0; k < year.Length - 1; k++)
+                                {
+                                    if (line.Contains(year[k]) && line.Contains(java) && bol == false)
+                                    {
+                                        bol = true;
+                                        header = k;
+                                    }
+                                    else if (bol == true)
+                                    {
+                                        if (line.Contains(year[k + 1]) && line.Contains(java))
+                                        {
+                                            pointer = k;
+                                        }
+
+                                    }
+                                }
+                                for (int l = header; l < pointer; l++)
+                                {
+                                    yr++;
+                                }
+                                if (exp1 < yr)
+                                {
+                                    //listBox2.Items.Add(store_names[i]);
+                                    while ((line = file.ReadLine()) != null)
+                                    {
+                                        line = line.Replace("-", " ");
+                                        for (int k = 0; k < year.Length - 1; k++)
+                                        {
+                                            if (line.Contains(year[k]) && line.Contains(php) && bol == false)
+                                            {
+                                                bol = true;
+                                                header = k;
+                                            }
+                                            else if (bol == true)
+                                            {
+                                                if (line.Contains(year[k + 1]) && line.Contains(php))
+                                                {
+                                                    pointer = k;
+                                                }
+
+                                            }
+                                        }
+                                        for (int l = header; l < pointer; l++)
+                                        {
+                                            yr++;
+                                        }
+                                        if (exp3 < yr)
+                                        {
+                                            listBox2.Items.Add(store_names[i]);
+                                        }
+                                        {
+
+                                        }
+                                    }
+                                }
+                                {
+
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (checkBox2.Checked == true && checkBox3.Checked == true && checkBox1.Checked == false)
+                {
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        if (line.Contains(Csharp) && line.Contains(textBox3.Text))
+                        {
+                            while ((line = file.ReadLine()) != null)
+                            {
+                                if (line.Contains(php) && line.Contains(textBox4.Text))
+                                {
+                                    listBox2.Items.Add(store_names[i]);
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        else if (checkBox2.Checked == true && textBox3.Text != null && checkBox3.Checked == true && textBox4.Text != null)
+                        {
+                            while ((line = file.ReadLine()) != null)
+                            {
+                                line = line.Replace("-", " ");
+                                for (int k = 0; k < year.Length - 1; k++)
+                                {
+                                    if (line.Contains(year[k]) && line.Contains(Csharp) && bol == false)
+                                    {
+                                        bol = true;
+                                        header = k;
+                                    }
+                                    else if (bol == true)
+                                    {
+                                        if (line.Contains(year[k + 1]) && line.Contains(Csharp))
+                                        {
+                                            pointer = k;
+                                        }
+
+                                    }
+                                }
+                                for (int l = header; l < pointer; l++)
+                                {
+                                    yr++;
+                                }
+                                if (exp2 < yr)
+                                {
+                                    //listBox2.Items.Add(store_names[i]);
+                                    while ((line = file.ReadLine()) != null)
+                                    {
+                                        line = line.Replace("-", " ");
+                                        for (int k = 0; k < year.Length - 1; k++)
+                                        {
+                                            if (line.Contains(year[k]) && line.Contains(php) && bol == false)
+                                            {
+                                                bol = true;
+                                                header = k;
+                                            }
+                                            else if (bol == true)
+                                            {
+                                                if (line.Contains(year[k + 1]) && line.Contains(php))
+                                                {
+                                                    pointer = k;
+                                                }
+
+                                            }
+                                        }
+                                        for (int l = header; l < pointer; l++)
+                                        {
+                                            yr++;
+                                        }
+                                        if (exp3 < yr)
+                                        {
+                                            listBox2.Items.Add(store_names[i]);
+                                        }
+                                        {
+
+                                        }
+                                    }
+                                }
+                                {
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void textBox4_TextChanged_1(object sender, EventArgs e)
+        {
+            exp3 = Convert.ToInt32(textBox4.Text);
+            exp3 = int.Parse(textBox4.Text);
+            button2.Enabled = true;
+        }
+
+        private void textBox3_TextChanged_1(object sender, EventArgs e)
+        {
+            exp2 = Convert.ToInt32(textBox3.Text);
+            exp2 = int.Parse(textBox3.Text);
+            button2.Enabled = true;
+        }
+
+        private void textBox2_TextChanged_1(object sender, EventArgs e)
+        {
+            exp1 = Convert.ToInt32(textBox2.Text);
+            exp1 = int.Parse(textBox2.Text);
+
+            button2.Enabled = true;
+        }
+
         private void checkBox3_CheckedChanged_1(object sender, EventArgs e)
         {
             if (checkBox3.Checked == true)
@@ -96,26 +534,20 @@ namespace Resume_Filter
             System.Diagnostics.Process.Start(path);
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            exp1 = Convert.ToInt32(textBox2.Text);
-            exp1 = int.Parse(textBox2.Text);
+        //private void textBox2_TextChanged(object sender, EventArgs e)
+        //{
 
-            button2.Enabled = true;
-        }
+        //}
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            exp2 = Convert.ToInt32(textBox3.Text);
-            exp2 = int.Parse(textBox3.Text);
-            button2.Enabled = true;
-        }
+        //private void textBox3_TextChanged(object sender, EventArgs e)
+        //{
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-            exp3 = Convert.ToInt32(textBox4.Text);
-            exp3 = int.Parse(textBox4.Text);
-            button2.Enabled = true;
-        }
+        //}
+
+        //    private void textBox4_TextChanged(object sender, EventArgs e)
+        //    {
+
+        //    }
+        //}
     }
 }
